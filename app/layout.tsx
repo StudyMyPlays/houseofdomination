@@ -1,25 +1,62 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, Bodoni_Moda, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { siteDescription, siteName, siteUrl, tagline } from "@/lib/site-config";
+import { CartProvider } from "@/components/providers/CartProvider";
+import { SkipLink } from "@/components/layout/SkipLink";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
-const archivo = Archivo({ variable: "--font-archivo", subsets: ["latin"] });
+const archivo = Archivo({ variable: "--font-archivo", subsets: ["latin"], display: "swap" });
 const bodoni = Bodoni_Moda({ variable: "--font-bodoni", subsets: ["latin"], display: "swap" });
-const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+
+const title = `${siteName} — ${tagline}`;
 
 export const metadata: Metadata = {
-  title: "House of Domination — Built to be witnessed",
-  description: "House of Domination. Rhinestone denim, elevated essentials, and pieces built to be witnessed.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: title,
+    template: `%s — ${siteName}`,
+  },
+  description: siteDescription,
+  openGraph: {
+    title,
+    description: siteDescription,
+    url: siteUrl,
+    siteName,
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-function Header() {
-  return <>
-    <div className="h-8 overflow-hidden border-b border-border bg-blood text-center font-mono text-[10px] uppercase tracking-[.24em] text-ivory"><div className="marquee-track flex w-max items-center gap-12 whitespace-nowrap py-2">FREE SHIPPING ON ORDERS OVER $150 <span>✦</span> WORLDWIDE DELIVERY <span>✦</span> FREE SHIPPING ON ORDERS OVER $150 <span>✦</span> WORLDWIDE DELIVERY <span>✦</span></div></div>
-    <header className="absolute top-8 z-20 flex w-full items-center justify-between px-5 py-5 text-ivory md:px-10">
-      <a href="#top" className="font-mono text-xs font-bold tracking-[.2em]">H/D</a>
-      <nav className="hidden items-center gap-8 font-mono text-[10px] uppercase tracking-[.2em] md:flex"><a href="#shop">Shop</a><a href="#story">The House</a><a href="#lookbook">Lookbook</a></nav>
-      <div className="flex items-center gap-5 font-mono text-[10px] uppercase tracking-[.2em]"><a href="#shop" className="hidden sm:block">Cart (0)</a><button aria-label="Open menu" className="md:hidden">Menu</button></div>
-    </header>
-  </>;
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0c0c0c",
+  colorScheme: "dark",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en" className={`${archivo.variable} ${bodoni.variable} ${mono.variable} bg-background`}>
+      <body>
+        <CartProvider>
+          <SkipLink />
+          <Header />
+          {children}
+          <Footer />
+        </CartProvider>
+      </body>
+    </html>
+  );
 }
-function Footer() { return <footer className="border-t border-border px-5 py-10 md:px-10"><div className="flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><p className="font-mono text-[10px] uppercase tracking-[.2em] text-rhinestone">House of Domination</p><p className="mt-3 font-serif text-3xl italic">Built to be witnessed.</p></div><div className="flex gap-6 font-mono text-[10px] uppercase tracking-[.15em] text-rhinestone"><a href="#top">Instagram</a><a href="#top">Terms</a><a href="#top">Contact</a></div></div><p className="mt-16 font-mono text-[9px] uppercase tracking-[.15em] text-rhinestone/60">© 2024 HOD. All rights reserved.</p></footer>; }
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en" className={`${archivo.variable} ${bodoni.variable} ${mono.variable} bg-background`}><body><Header />{children}<Footer /></body></html>; }
