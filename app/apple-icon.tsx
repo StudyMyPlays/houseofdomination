@@ -1,9 +1,13 @@
 import { ImageResponse } from "next/og";
+import { badgeSvg } from "@/lib/brand-mark";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
 export default function AppleIcon() {
+  // 180px is enough room for the full seal, type ring included.
+  const seal = badgeSvg({ fg: "#f1eee7" });
+
   return new ImageResponse(
     (
       <div
@@ -14,13 +18,9 @@ export default function AppleIcon() {
           alignItems: "center",
           justifyContent: "center",
           background: "#0c0c0c",
-          color: "#f1eee7",
-          fontSize: 56,
-          fontWeight: 700,
-          letterSpacing: "-0.02em",
         }}
       >
-        H/D
+        <img width={148} height={148} alt="" src={`data:image/svg+xml;utf8,${encodeURIComponent(seal)}`} />
       </div>
     ),
     { ...size },

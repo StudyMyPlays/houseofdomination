@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Bodoni_Moda, Geist_Mono } from "next/font/google";
+import { Archivo, Bodoni_Moda, Geist_Mono, Sacramento } from "next/font/google";
 import "./globals.css";
 import { siteDescription, siteName, siteUrl, tagline } from "@/lib/site-config";
 import { CartProvider } from "@/components/providers/CartProvider";
@@ -10,6 +10,8 @@ import { Footer } from "@/components/layout/Footer";
 const archivo = Archivo({ variable: "--font-archivo", subsets: ["latin"], display: "swap" });
 const bodoni = Bodoni_Moda({ variable: "--font-bodoni", subsets: ["latin"], display: "swap" });
 const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+// Monoline signature face — carries the "House of • Domination" wordmark.
+const script = Sacramento({ variable: "--font-signature", weight: "400", subsets: ["latin"], display: "swap" });
 
 const title = `${siteName} — ${tagline}`;
 
@@ -48,7 +50,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${archivo.variable} ${bodoni.variable} ${mono.variable} bg-background`}>
+    <html lang="en" className={`${archivo.variable} ${bodoni.variable} ${mono.variable} ${script.variable} bg-background`}>
       <body>
         <CartProvider>
           <SkipLink />

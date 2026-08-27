@@ -1,3 +1,5 @@
+import type { GarmentVariant } from "@/components/ui/Garment";
+
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const siteName = "House of Domination";
@@ -12,12 +14,17 @@ export const navLinks = [
 ] as const;
 
 /**
- * Product/lookbook visuals are abstract placeholders until real photography exists.
- * The "image" variant is the documented future swap point — components render it
- * with next/image and a required alt, so adding real photos needs no markup changes.
+ * Product/lookbook visuals come in three kinds:
+ * - "garment": the house vector forms (see components/ui/Garment) — used for
+ *   pieces we can render truthfully without photography.
+ * - "placeholder": an abstract gradient stand-in.
+ * - "image": real photography. Drop files in `public/products/` (see the README
+ *   there for the expected filenames) and swap the one `media` line — every
+ *   call site already renders it through next/image with a required alt.
  */
 export type ProductMedia =
   | { kind: "placeholder"; from: string; via: string; to: string; angle: number; motif: 1 | 2 | 3 }
+  | { kind: "garment"; variant: GarmentVariant; colorway: "black" | "ivory"; from: string; to: string }
   | { kind: "image"; src: string; alt: string };
 
 export type Product = {
@@ -35,12 +42,30 @@ export function formatPrice(price: number) {
 
 export const products: Product[] = [
   {
+    id: "domi-nation-flame-jort",
+    name: "Domi Nation Flame Jort",
+    price: 215,
+    tag: "New arrival",
+    collection: "Rhinestone denim",
+    // TODO: swap to { kind: "image", src: "/products/domi-nation-flame-jort.jpg", alt: "Domi Nation Flame Jort in jet black denim with red and silver rhinestone side flames" } once photography is in public/products/.
+    media: { kind: "garment", variant: "shorts", colorway: "black", from: "#1d1d1d", to: "#050505" },
+  },
+  {
+    id: "flame-jort-washed",
+    name: "Flame Jort — Washed",
+    price: 215,
+    tag: "New arrival",
+    collection: "Rhinestone denim",
+    // TODO: swap to { kind: "image", src: "/products/flame-jort-washed.jpg", alt: "Flame Jort in washed black denim, back view with the DN pocket monogram" } once photography is in public/products/.
+    media: { kind: "garment", variant: "shorts", colorway: "ivory", from: "#3d3b38", to: "#171614" },
+  },
+  {
     id: "sovereign-jean",
     name: "The Sovereign Jean",
     price: 240,
     tag: "Best seller",
-    collection: "Signature collection",
-    // TODO: swap to { kind: "image", src: "/products/sovereign-jean.jpg", alt: "The Sovereign Jean, rhinestone-embellished denim" } once photography is available.
+    collection: "Rhinestone denim",
+    // TODO: swap to { kind: "image", src: "/products/sovereign-jean.jpg", alt: "The Sovereign Jean, rhinestone-embellished denim" } once photography is in public/products/.
     media: { kind: "placeholder", from: "#273344", via: "#10151d", to: "#8793a2", angle: 135, motif: 1 },
   },
   {
@@ -49,27 +74,60 @@ export const products: Product[] = [
     price: 180,
     tag: "New arrival",
     collection: "Signature collection",
-    // TODO: swap to { kind: "image", src: "/products/rhinestone-trucker.jpg", alt: "HOD Rhinestone Trucker jacket" } once photography is available.
-    media: { kind: "placeholder", from: "#d2c7b7", via: "#6b625a", to: "#eee9df", angle: 135, motif: 2 },
+    // TODO: swap to { kind: "image", src: "/products/rhinestone-trucker.jpg", alt: "HOD Rhinestone Trucker jacket" } once photography is in public/products/.
+    media: { kind: "garment", variant: "jacket", colorway: "black", from: "#2c2b28", to: "#0a0a0a" },
   },
   {
     id: "domination-hoodie",
     name: "Domination Hoodie",
     price: 120,
     tag: "Limited",
-    collection: "Signature collection",
-    // TODO: swap to { kind: "image", src: "/products/domination-hoodie.jpg", alt: "Domination Hoodie" } once photography is available.
-    media: { kind: "placeholder", from: "#343434", via: "#0b0b0b", to: "#5d5d5d", angle: 135, motif: 3 },
+    collection: "Elevated essentials",
+    // TODO: swap to { kind: "image", src: "/products/domination-hoodie.jpg", alt: "Domination Hoodie" } once photography is in public/products/.
+    media: { kind: "garment", variant: "hoodie", colorway: "black", from: "#303030", to: "#0b0b0b" },
+  },
+  {
+    id: "house-sweatpant",
+    name: "The House Sweatpant",
+    price: 110,
+    tag: "Essential",
+    collection: "Elevated essentials",
+    // TODO: swap to { kind: "image", src: "/products/house-sweatpant.jpg", alt: "The House Sweatpant" } once photography is in public/products/.
+    media: { kind: "garment", variant: "sweats", colorway: "black", from: "#26262a", to: "#08080a" },
   },
   {
     id: "house-tee",
     name: "The House Tee",
     price: 75,
     tag: "Essential",
-    collection: "Signature collection",
-    // TODO: swap to { kind: "image", src: "/products/house-tee.jpg", alt: "The House Tee" } once photography is available.
-    media: { kind: "placeholder", from: "#eee8dc", via: "#9a938a", to: "#1c1c1c", angle: 135, motif: 1 },
+    collection: "Elevated essentials",
+    // TODO: swap to { kind: "image", src: "/products/house-tee.jpg", alt: "The House Tee" } once photography is in public/products/.
+    media: { kind: "garment", variant: "tee", colorway: "ivory", from: "#efeadf", to: "#b6afa2" },
   },
+  {
+    id: "black-on-ivory-tee",
+    name: "Black on Ivory Tee",
+    price: 80,
+    tag: "New arrival",
+    collection: "Elevated essentials",
+    // TODO: swap to { kind: "image", src: "/products/black-on-ivory-tee.jpg", alt: "Black on Ivory Tee" } once photography is in public/products/.
+    media: { kind: "garment", variant: "tee", colorway: "black", from: "#232323", to: "#070707" },
+  },
+];
+
+/** The forms that rotate through the hero, in carousel order. */
+export const heroGarments: {
+  id: string;
+  variant: GarmentVariant;
+  colorway: "black" | "ivory";
+  label: string;
+  caption: string;
+}[] = [
+  { id: "hoodie", variant: "hoodie", colorway: "black", label: "Hoodie", caption: "Heavyweight fleece, set-stone chest" },
+  { id: "jort", variant: "shorts", colorway: "black", label: "Jort", caption: "Rhinestone flames, hand-set hem fade" },
+  { id: "tee", variant: "tee", colorway: "ivory", label: "Tee", caption: "Boxed cotton, ivory run" },
+  { id: "sweats", variant: "sweats", colorway: "black", label: "Sweats", caption: "Relaxed leg, banded cuff" },
+  { id: "jacket", variant: "jacket", colorway: "black", label: "Trucker", caption: "Structured denim, stoned placket" },
 ];
 
 export const lookbookPanels: { id: string; number: string; media: ProductMedia }[] = [
