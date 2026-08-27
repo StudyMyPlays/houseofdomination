@@ -7,7 +7,6 @@
   --ivory: #f1eee7;
   --rhinestone: #d8d1c4;
   --blood: #9e1b21;
-  --cobalt: #2946d3;
 }
 
 @theme inline {
@@ -20,6 +19,13 @@
   --color-border: color-mix(in srgb, var(--ivory) 20%, transparent);
   --color-primary: var(--ivory);
   --color-primary-foreground: var(--obsidian);
+  /* Literal brand palette, used directly as bg-, text-, border- utilities throughout (e.g. bg-blood, text-rhinestone) */
+  --color-obsidian: var(--obsidian);
+  --color-ash: var(--ash);
+  --color-graphite: var(--graphite);
+  --color-ivory: var(--ivory);
+  --color-rhinestone: var(--rhinestone);
+  --color-blood: var(--blood);
   --font-sans: var(--font-archivo), Arial, sans-serif;
   --font-serif: var(--font-bodoni), Georgia, serif;
   --font-mono: var(--font-geist-mono), monospace;
