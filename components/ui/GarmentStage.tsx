@@ -148,7 +148,7 @@ export function GarmentStage({ className }: { className?: string }) {
             onClick={() => setActive(index)}
             className={cn(
               "h-[3px] rounded-full transition-all duration-300 ease",
-              index === active ? "w-8 bg-ivory" : "w-3 bg-ivory/25 hover:bg-ivory/50",
+              index === active ? "w-8 bg-electric-blue" : "w-3 bg-ivory/25 hover:bg-electric-blue/70",
             )}
           />
         ))}

@@ -10,7 +10,7 @@ export const siteDescription =
 export const navLinks = [
   { href: "#shop", label: "Shop" },
   { href: "#story", label: "The House" },
-  { href: "#lookbook", label: "Lookbook" },
+  { href: "#entrance", label: "Make an Entrance" },
 ] as const;
 
 /**

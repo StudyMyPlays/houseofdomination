@@ -18,7 +18,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto grid max-w-[1500px] items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-8">
         <div className="lg:pr-6">
-          <p className="mb-6 font-mono text-[10px] uppercase tracking-[.3em] text-rhinestone">
+          <p className="mb-6 font-mono text-[10px] uppercase tracking-[.3em] text-electric-blue">
             Vol. 04 — The Sovereign Collection
           </p>
 
@@ -49,7 +49,7 @@ export function Hero() {
         <div className="relative">
           {/* The signature, ghosted behind the stage as a watermark. */}
           <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-2 -translate-x-1/2">
-            <Wordmark className="text-[clamp(2.6rem,7vw,5.5rem)] text-ivory/[.07]" />
+            <Image src="/logo-secondary.png" alt="" aria-hidden="true" width={420} height={420} className="size-[clamp(10rem,28vw,24rem)] rounded-full object-cover opacity-[.07]" />
           </div>
           <GarmentStage className="relative z-10" />
         </div>
