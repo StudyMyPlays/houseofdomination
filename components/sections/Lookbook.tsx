@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { lookbookPanels } from "@/lib/site-config";
+import { lookbookPanels, type ProductMedia } from "@/lib/site-config";
 
 export function Lookbook() {
   return (
@@ -17,16 +17,19 @@ export function Lookbook() {
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 md:col-span-8">
-          {lookbookPanels.map((panel, index) => (
+          {lookbookPanels.map((panel, index) => {
+            const media = panel.media as Extract<ProductMedia, { kind: "image" }>;
+            return (
             <div
               key={panel.id}
               className={`relative aspect-[3/4] overflow-hidden border border-ivory/10 bg-obsidian${index === 1 ? " sm:mt-8" : ""}`}
             >
-              <Image src={panel.media.src} alt={panel.media.alt} fill sizes="(min-width: 768px) 36vw, 90vw" className="object-contain p-3" />
+              <Image src={media.src} alt={media.alt} fill sizes="(min-width: 768px) 36vw, 90vw" className="object-contain p-3" />
               <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(145deg,rgba(158,27,33,.16),transparent_45%,rgba(35,87,214,.18))]" />
               <span aria-hidden="true" className="absolute bottom-5 left-5 font-serif text-5xl italic text-ivory/80">{panel.number}</span>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
