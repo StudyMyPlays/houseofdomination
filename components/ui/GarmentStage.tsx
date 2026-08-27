@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Garment } from "@/components/ui/Garment";
+import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { heroGarments } from "@/lib/site-config";
 
@@ -57,7 +57,7 @@ export function GarmentStage({ className }: { className?: string }) {
       <div
         role="group"
         aria-roledescription="carousel"
-        aria-label="House of Domination silhouettes"
+        aria-label="House of Domination new arrivals"
         tabIndex={0}
         onKeyDown={(event) => {
           if (event.key === "ArrowRight") { event.preventDefault(); go(1); }
@@ -102,11 +102,17 @@ export function GarmentStage({ className }: { className?: string }) {
                   pointerEvents: isActive ? "auto" : "none",
                 }}
               >
-                <Garment
-                  variant={garment.variant}
-                  colorway={garment.colorway}
-                  className="h-full w-full p-6 drop-shadow-[0_40px_60px_rgba(0,0,0,.65)] md:p-10"
-                />
+                <div className="relative h-full w-full overflow-hidden rounded-sm border border-ivory/10 bg-obsidian/40 p-3 shadow-2xl shadow-blood/20 md:p-6">
+                  <Image
+                    src={garment.src}
+                    alt={garment.alt}
+                    fill
+                    sizes="(min-width: 1024px) 44vw, 90vw"
+                    className="object-contain p-2 mix-blend-screen md:p-5"
+                    priority={isActive}
+                  />
+                  <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(158,27,33,.16),transparent_42%,rgba(35,87,214,.2))]" />
+                </div>
               </div>
             );
           })}

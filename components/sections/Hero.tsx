@@ -1,4 +1,4 @@
-import { Wordmark } from "@/components/brand/Wordmark";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { GarmentStage } from "@/components/ui/GarmentStage";
 import { WaitlistForm } from "@/components/ui/WaitlistForm";

@@ -47,98 +47,25 @@ export const products: Product[] = [
     price: 215,
     tag: "New arrival",
     collection: "Rhinestone denim",
-    // TODO: swap to { kind: "image", src: "/products/domi-nation-flame-jort.jpg", alt: "Domi Nation Flame Jort in jet black denim with red and silver rhinestone side flames" } once photography is in public/products/.
-    media: { kind: "garment", variant: "shorts", colorway: "black", from: "#1d1d1d", to: "#050505" },
+    media: { kind: "image", src: "/products/merch-example-1.jpg", alt: "Black denim flame shorts with rhinestone detailing" },
   },
   {
-    id: "flame-jort-washed",
-    name: "Flame Jort — Washed",
+    id: "flame-jort-studio-set",
+    name: "Flame Jort — Studio Set",
     price: 215,
     tag: "New arrival",
     collection: "Rhinestone denim",
-    // TODO: swap to { kind: "image", src: "/products/flame-jort-washed.jpg", alt: "Flame Jort in washed black denim, back view with the DN pocket monogram" } once photography is in public/products/.
-    media: { kind: "garment", variant: "shorts", colorway: "ivory", from: "#3d3b38", to: "#171614" },
-  },
-  {
-    id: "sovereign-jean",
-    name: "The Sovereign Jean",
-    price: 240,
-    tag: "Best seller",
-    collection: "Rhinestone denim",
-    // TODO: swap to { kind: "image", src: "/products/sovereign-jean.jpg", alt: "The Sovereign Jean, rhinestone-embellished denim" } once photography is in public/products/.
-    media: { kind: "placeholder", from: "#273344", via: "#10151d", to: "#8793a2", angle: 135, motif: 1 },
-  },
-  {
-    id: "rhinestone-trucker",
-    name: "HOD Rhinestone Trucker",
-    price: 180,
-    tag: "New arrival",
-    collection: "Signature collection",
-    // TODO: swap to { kind: "image", src: "/products/rhinestone-trucker.jpg", alt: "HOD Rhinestone Trucker jacket" } once photography is in public/products/.
-    media: { kind: "garment", variant: "jacket", colorway: "black", from: "#2c2b28", to: "#0a0a0a" },
-  },
-  {
-    id: "domination-hoodie",
-    name: "Domination Hoodie",
-    price: 120,
-    tag: "Limited",
-    collection: "Elevated essentials",
-    // TODO: swap to { kind: "image", src: "/products/domination-hoodie.jpg", alt: "Domination Hoodie" } once photography is in public/products/.
-    media: { kind: "garment", variant: "hoodie", colorway: "black", from: "#303030", to: "#0b0b0b" },
-  },
-  {
-    id: "house-sweatpant",
-    name: "The House Sweatpant",
-    price: 110,
-    tag: "Essential",
-    collection: "Elevated essentials",
-    // TODO: swap to { kind: "image", src: "/products/house-sweatpant.jpg", alt: "The House Sweatpant" } once photography is in public/products/.
-    media: { kind: "garment", variant: "sweats", colorway: "black", from: "#26262a", to: "#08080a" },
-  },
-  {
-    id: "house-tee",
-    name: "The House Tee",
-    price: 75,
-    tag: "Essential",
-    collection: "Elevated essentials",
-    // TODO: swap to { kind: "image", src: "/products/house-tee.jpg", alt: "The House Tee" } once photography is in public/products/.
-    media: { kind: "garment", variant: "tee", colorway: "ivory", from: "#efeadf", to: "#b6afa2" },
-  },
-  {
-    id: "black-on-ivory-tee",
-    name: "Black on Ivory Tee",
-    price: 80,
-    tag: "New arrival",
-    collection: "Elevated essentials",
-    // TODO: swap to { kind: "image", src: "/products/black-on-ivory-tee.jpg", alt: "Black on Ivory Tee" } once photography is in public/products/.
-    media: { kind: "garment", variant: "tee", colorway: "black", from: "#232323", to: "#070707" },
+    media: { kind: "image", src: "/products/merch-example-2.jpg", alt: "Front and back views of black rhinestone flame shorts" },
   },
 ];
 
-/** The forms that rotate through the hero, in carousel order. */
-export const heroGarments: {
-  id: string;
-  variant: GarmentVariant;
-  colorway: "black" | "ivory";
-  label: string;
-  caption: string;
-}[] = [
-  { id: "hoodie", variant: "hoodie", colorway: "black", label: "Hoodie", caption: "Heavyweight fleece, set-stone chest" },
-  { id: "jort", variant: "shorts", colorway: "black", label: "Jort", caption: "Rhinestone flames, hand-set hem fade" },
-  { id: "tee", variant: "tee", colorway: "ivory", label: "Tee", caption: "Boxed cotton, ivory run" },
-  { id: "sweats", variant: "sweats", colorway: "black", label: "Sweats", caption: "Relaxed leg, banded cuff" },
-  { id: "jacket", variant: "jacket", colorway: "black", label: "Trucker", caption: "Structured denim, stoned placket" },
-];
+/** The photographed pieces that rotate through the hero, in carousel order. */
+export const heroGarments = [
+  { id: "flame-jort-front", src: "/products/merch-example-1.jpg", alt: "Black rhinestone flame shorts", label: "Flame Jort", caption: "Rhinestone flames, hand-set hem fade" },
+  { id: "flame-jort-set", src: "/products/merch-example-2.jpg", alt: "Front and back views of black rhinestone flame shorts", label: "The Studio Set", caption: "One piece, two signatures" },
+] as const;
 
 export const lookbookPanels: { id: string; number: string; media: ProductMedia }[] = [
-  {
-    id: "look-01",
-    number: "01",
-    media: { kind: "placeholder", from: "#a69b91", via: "#353434", to: "#111111", angle: 160, motif: 2 },
-  },
-  {
-    id: "look-02",
-    number: "02",
-    media: { kind: "placeholder", from: "#1a1d2b", via: "#2946d3", to: "#d8d1c4", angle: 30, motif: 3 },
-  },
+  { id: "look-01", number: "01", media: { kind: "image", src: "/products/merch-example-1.jpg", alt: "Black rhinestone flame shorts" } },
+  { id: "look-02", number: "02", media: { kind: "image", src: "/products/merch-example-2.jpg", alt: "Front and back views of black rhinestone flame shorts" } },
 ];
