@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { navLinks, siteName } from "@/lib/site-config";
-import { Monogram } from "@/components/brand/Monogram";
-import { Wordmark } from "@/components/brand/Wordmark";
+import Image from "next/image";
 import { useCart } from "@/components/providers/CartProvider";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { CartDrawer } from "@/components/layout/CartDrawer";
@@ -32,9 +31,8 @@ export function Header() {
       </div>
       <div className="absolute inset-x-0 top-8 flex w-full items-center justify-between px-5 py-5 md:px-10">
         <Link href="#top" aria-label={`${siteName} — home`} className="flex items-center gap-3">
-          {/* Bare mark in the bar — the seal's type ring is illegible below ~48px. */}
-          <Monogram variant="mark" title="" className="h-8 w-8 shrink-0 text-ivory" />
-          <Wordmark className="hidden text-2xl text-ivory sm:inline-flex" />
+          <Image src="/logo-secondary.png" alt="House of Domination" width={48} height={48} className="size-9 shrink-0 object-contain sm:size-10" />
+          <span className="hidden font-serif text-xl italic text-ivory sm:inline">House of Domination</span>
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-8 font-mono text-[10px] uppercase tracking-[.2em] md:flex">
           {navLinks.map((link) => (

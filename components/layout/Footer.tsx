@@ -1,6 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Monogram } from "@/components/brand/Monogram";
-import { Wordmark } from "@/components/brand/Wordmark";
 import { WaitlistForm } from "@/components/ui/WaitlistForm";
 import { siteName, tagline } from "@/lib/site-config";
 
@@ -9,7 +8,7 @@ export function Footer() {
     <footer className="border-t border-border px-5 py-14 md:px-10">
       <div className="flex flex-col justify-between gap-12 md:flex-row md:items-start">
         <div>
-          <Wordmark subline="Black on Ivory" className="items-start text-4xl text-ivory" sublineClassName="text-rhinestone" />
+          <Image src="/logo-primary.png" alt="House of Domination — Black on Ivory" width={420} height={180} className="h-auto w-72 object-contain object-left" />
           <p className="mt-6 font-serif text-3xl italic text-rhinestone">{tagline}</p>
         </div>
 
@@ -27,7 +26,7 @@ export function Footer() {
         <p className="font-mono text-[9px] uppercase tracking-[.15em] text-rhinestone/60">
           © {new Date().getFullYear()} {siteName}. All rights reserved.
         </p>
-        <Monogram variant="seal" title="" className="h-14 w-14 shrink-0 text-ivory/30" />
+        <Image src="/logo-secondary.png" alt="House of Domination secondary emblem" width={96} height={96} className="size-16 shrink-0 rounded-full object-cover opacity-70" />
       </div>
     </footer>
   );

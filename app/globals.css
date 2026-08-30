@@ -7,6 +7,7 @@
   --ivory: #f1eee7;
   --rhinestone: #d8d1c4;
   --blood: #9e1b21;
+  --electric-blue: #2357d6;
 }
 
 @theme inline {
@@ -26,6 +27,7 @@
   --color-ivory: var(--ivory);
   --color-rhinestone: var(--rhinestone);
   --color-blood: var(--blood);
+  --color-electric-blue: var(--electric-blue);
   --font-sans: var(--font-archivo), Arial, sans-serif;
   --font-serif: var(--font-bodoni), Georgia, serif;
   --font-mono: var(--font-geist-mono), monospace;
