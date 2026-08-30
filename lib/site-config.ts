@@ -59,13 +59,7 @@ export const products: Product[] = [
   },
 ];
 
-/** The photographed pieces that rotate through the hero, in carousel order. */
+/** The photographed piece featured in the hero. */
 export const heroGarments = [
   { id: "flame-jort-front", src: "/products/merch-example-1.jpg", alt: "Black rhinestone flame shorts", label: "Flame Jort", caption: "Rhinestone flames, hand-set hem fade" },
-  { id: "flame-jort-set", src: "/products/merch-example-2.jpg", alt: "Front and back views of black rhinestone flame shorts", label: "The Studio Set", caption: "One piece, two signatures" },
 ] as const;
-
-export const lookbookPanels: { id: string; number: string; media: ProductMedia }[] = [
-  { id: "look-01", number: "01", media: { kind: "image", src: "/products/merch-example-1.jpg", alt: "Black rhinestone flame shorts" } },
-  { id: "look-02", number: "02", media: { kind: "image", src: "/products/merch-example-2.jpg", alt: "Front and back views of black rhinestone flame shorts" } },
-];
